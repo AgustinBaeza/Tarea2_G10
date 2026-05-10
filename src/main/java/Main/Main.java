@@ -1,4 +1,9 @@
 package Main;
 
 public class Main {
+    public void main(String[] args){
+
+        System.out.println("Tarea2");
+
+    }
 }

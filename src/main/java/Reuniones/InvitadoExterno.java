@@ -76,6 +76,7 @@ public class InvitadoExterno implements Invitable{
         if(apellidos == null || apellidos.isBlank()){
             throw new InvitadoInvalidoException("Los apellidos del invitado externo deben ser validos.");
         }
+        this.apellidos = apellidos;
     }
 
     /**

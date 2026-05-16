@@ -1,15 +1,15 @@
 package Reuniones.Excepciones;
 
 /**
- * Excepcion lanzada cuando una nota esta vacia.
+ * Excepcion lanzada cuando un autor esta vacio
  */
-public class NotaVaciaException extends RuntimeException {
+public class AutorVacioException extends RuntimeException{
 
     /**
      * Constructor de la excepcion
      * @param mensaje mensaje descriptivo con el motivo de la excepcion
      */
-    public NotaVaciaException(String mensaje) {
+    public AutorVacioException(String mensaje){
         super(mensaje);
     }
 }

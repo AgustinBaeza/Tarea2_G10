@@ -1,7 +1,8 @@
 package Reuniones;
 
+import Reuniones.Excepciones.AutorVacioException;
 import Reuniones.Excepciones.NotaVaciaException;
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 /**
  * Clase que representa una nota escrita durante una reunion.
@@ -9,7 +10,7 @@ import java.time.LocalDateTime;
 public class Nota {
 
     private String contenido;
-    private LocalDateTime fechaHora;
+    private Instant fechaHora;
     private Empleado autor;
 
     /**
@@ -17,19 +18,19 @@ public class Nota {
      *
      * @param contenido contenido de la nota
      * @param autor empleado que escribe la nota
-     * @throws NotaVaciaException
-     * si el contenido está vacío
+     * @throws NotaVaciaException si el contenido está vacío
      */
     public Nota(String contenido, Empleado autor) {
 
         if (contenido == null || contenido.isBlank()) {
-            throw new NotaVaciaException(
-                    "La nota no puede estar vacía."
-            );
+            throw new NotaVaciaException("La nota no puede estar vacía.");
+        }
+        if (autor == null){
+            throw new AutorVacioException("El autor debe ser valido.");
         }
         this.contenido = contenido;
         this.autor = autor;
-        this.fechaHora = LocalDateTime.now();
+        this.fechaHora = Instant.now();
     }
 
     public String getContenido() {
@@ -40,7 +41,7 @@ public class Nota {
         this.contenido = contenido;
     }
 
-    public LocalDateTime getFechaHora() {
+    public Instant getFechaHora() {
         return fechaHora;
     }
 
@@ -54,10 +55,6 @@ public class Nota {
 
     @Override
     public String toString() {
-        return "Nota{" +
-                "contenido='" + contenido + '\'' +
-                ", fechaHora=" + fechaHora +
-                ", autor=" + autor +
-                '}';
+        return "Nota{contenido = "+ contenido + ", fechaHora = " + fechaHora + ", autor = " + autor + "}";
     }
 }

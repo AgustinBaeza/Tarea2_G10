@@ -5,7 +5,7 @@ import Reuniones.Empleado;
 import Reuniones.Nota;
 import Reuniones.Retraso;
 
-import java.time.LocalTime;
+import java.time.Instant;
 
 public class Main {
 
@@ -34,10 +34,7 @@ public class Main {
         asistencia.agregarAsistente(empleado2);
 
         // Registrar retraso
-        Retraso retraso = new Retraso(
-                empleado2,
-                LocalTime.of(10,15)
-        );
+        Retraso retraso = new Retraso(empleado2,Instant.now());
 
         asistencia.registrarRetraso(retraso);
 

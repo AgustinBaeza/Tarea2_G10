@@ -6,6 +6,10 @@ package Reuniones.Excepciones;
  */
 public class AsistenciaDuplicadaException extends RuntimeException {
 
+    /**
+     * Constructor de la excepcion
+     * @param mensaje mensaje descriptivo con el motivo de la excepcion
+     */
     public AsistenciaDuplicadaException(String mensaje) {
         super(mensaje);
     }

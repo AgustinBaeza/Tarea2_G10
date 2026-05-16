@@ -1,7 +1,7 @@
 package Reuniones;
 
 import Reuniones.Excepciones.RetrasoInvalidoException;
-import java.time.LocalTime;
+import java.time.Instant;
 
 /**
  * Clase que representa el retraso de un empleado.
@@ -9,21 +9,23 @@ import java.time.LocalTime;
 public class Retraso {
 
     private Empleado empleado;
-    private LocalTime horaLlegada;
+    private Instant horaLlegada;
 
     /**
      * Constructor de la clase Retraso.
      *
      * @param empleado empleado retrasado
      * @param horaLlegada hora de llegada
-     * @throws RetrasoInvalidoException
-     * si la hora es null
+     * @throws RetrasoInvalidoException si la hora es null
      */
-    public Retraso(Empleado empleado, LocalTime horaLlegada) {
-        if (horaLlegada == null) {
+    public Retraso(Empleado empleado, Instant horaLlegada) {
+        if (empleado == null) {
             throw new RetrasoInvalidoException(
-                    "La hora de llegada no puede ser null."
+                    "El empleado no puede ser null."
             );
+        }
+        if (horaLlegada == null) {
+            throw new RetrasoInvalidoException("La hora de llegada no puede ser null.");
         }
         this.empleado = empleado;
         this.horaLlegada = horaLlegada;
@@ -33,23 +35,12 @@ public class Retraso {
         return empleado;
     }
 
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
-    }
-
-    public LocalTime getHoraLlegada() {
+    public Instant getHoraLlegada() {
         return horaLlegada;
-    }
-
-    public void setHoraLlegada(LocalTime horaLlegada) {
-        this.horaLlegada = horaLlegada;
     }
 
     @Override
     public String toString() {
-        return "Retraso{" +
-                "empleado=" + empleado +
-                ", horaLlegada=" + horaLlegada +
-                '}';
+        return "Retraso{empleado = " + empleado + ", horaLlegada = "+ horaLlegada +"}";
     }
 }

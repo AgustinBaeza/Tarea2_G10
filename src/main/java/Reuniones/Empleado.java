@@ -26,7 +26,6 @@ public class Empleado {
 
     /**
      * Metodo toString con la identificacion completa del empleado
-     *
      * @return String con nombre, apellidos, id y correo del empleado
      */
     @Override

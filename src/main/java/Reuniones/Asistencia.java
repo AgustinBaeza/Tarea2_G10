@@ -1,6 +1,6 @@
 package Reuniones;
 
-import Reuniones.Excepciones.AsistenciaDuplicadaException;
+import Reuniones.Excepciones.RegistroDuplicadoException;
 import java.util.ArrayList;
 
 /**
@@ -22,30 +22,34 @@ public class Asistencia {
     }
     /**
     * Agrega un asistente.
-    *
     * @param empleado empleado asistente
-    */
+     * @throws RegistroDuplicadoException
+     * si el empleado ya fue registrado como asistente
+     */
     public void agregarAsistente(Empleado empleado) {
 
         if (asistentes.contains(empleado)) {
-        throw new AsistenciaDuplicadaException("El empleado ya fue registrado como asistente.");
+            throw new RegistroDuplicadoException("El empleado ya fue registrado como asistente.");
         }
 
         asistentes.add(empleado);
     }
     /**
      * Agrega un empleado ausente.
-     *
      * @param empleado empleado ausente
-     * @throws AsistenciaDuplicadaException
-     * si el empleado ya fue registrado
+     * @throws RegistroDuplicadoException
+     * si el empleado ya fue registrado como ausente
      */
     public void agregarAusente(Empleado empleado) {
+
+        if (ausentes.contains(empleado)) {
+            throw new RegistroDuplicadoException("El empleado ya fue registrado como ausente.");
+        }
+
         ausentes.add(empleado);
     }
     /**
      * Registra un retraso.
-     *
      * @param retraso retraso registrado
      */
     public void registrarRetraso(Retraso retraso) {
@@ -66,7 +70,6 @@ public class Asistencia {
 
     /**
      * Obtiene el total de asistentes.
-     *
      * @return cantidad de asistentes
      */
     public int totalAsistentes() {
@@ -75,7 +78,6 @@ public class Asistencia {
 
     /**
      * Calcula el porcentaje de asistencia.
-     *
      * @param totalInvitados total de invitados
      * @return porcentaje de asistencia
      */
@@ -88,12 +90,12 @@ public class Asistencia {
         return ((double) asistentes.size() / totalInvitados) * 100;
     }
 
+    /**
+     * toString que devuelve los detalles del registro de asistencia en texto
+     * @return String con los asistentes, ausentes y retrasos
+     */
     @Override
     public String toString() {
-        return "Asistencia{" +
-                "asistentes=" + asistentes +
-                ", ausentes=" + ausentes +
-                ", retrasos=" + retrasos +
-                '}';
+        return "Asistencia{asistentes = " +asistentes +", ausentes = " + ausentes +", retrasos = " + retrasos +"}";
     }
 }

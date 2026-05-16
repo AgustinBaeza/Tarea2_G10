@@ -1,5 +1,7 @@
 package Reuniones;
 
+import java.time.Instant;
+
 /**
  * Clase que hereda de Reunion, corresponde a la sesion virtual en la que se realizara la reunion
  */
@@ -15,7 +17,7 @@ public class ReunionVirtual extends Reunion{
      * @param horaFin hora real de finalizacion
      * @param enlace link de la reunion
      */
-    public ReunionVirtual(int fecha, int horaPrevista, int duracionPrevista, int horaInicio, int horaFin, String enlace) {
+    public ReunionVirtual(Instant fecha, Instant horaPrevista, Instant duracionPrevista, Instant horaInicio, Instant horaFin, String enlace) {
         super(fecha, horaPrevista, duracionPrevista, horaInicio, horaFin);
         this.enlace = enlace;
     }

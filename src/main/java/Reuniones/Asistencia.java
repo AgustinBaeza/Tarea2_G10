@@ -8,8 +8,8 @@ import java.util.ArrayList;
  */
 public class Asistencia {
 
-    private ArrayList<Empleado> asistentes;
-    private ArrayList<Empleado> ausentes;
+    private ArrayList<Invitable> asistentes;
+    private ArrayList<Invitable> ausentes;
     private ArrayList<Retraso> retrasos;
 
     /**
@@ -26,7 +26,7 @@ public class Asistencia {
      * @throws RegistroDuplicadoException
      * si el empleado ya fue registrado como asistente
      */
-    public void agregarAsistente(Empleado empleado) {
+    public void agregarAsistente(Invitable empleado) {
 
         if (asistentes.contains(empleado)) {
             throw new RegistroDuplicadoException("El empleado ya fue registrado como asistente.");
@@ -40,7 +40,7 @@ public class Asistencia {
      * @throws RegistroDuplicadoException
      * si el empleado ya fue registrado como ausente
      */
-    public void agregarAusente(Empleado empleado) {
+    public void agregarAusente(Invitable empleado) {
 
         if (ausentes.contains(empleado)) {
             throw new RegistroDuplicadoException("El empleado ya fue registrado como ausente.");
@@ -56,11 +56,11 @@ public class Asistencia {
         retrasos.add(retraso);
     }
 
-    public ArrayList<Empleado> getAsistentes() {
+    public ArrayList<Invitable> getAsistentes() {
         return asistentes;
     }
 
-    public ArrayList<Empleado> getAusentes() {
+    public ArrayList<Invitable> getAusentes() {
         return ausentes;
     }
 

@@ -4,7 +4,7 @@ package Reuniones;
  * Clase que representa a un empleado
  * Almacena la informacion de identificacion y correo de un empleado
  */
-public class Empleado {
+public class Empleado implements Invitable {
     private String id;         // id del empleado
     private String apellidos;  // apellidos del empleado
     private String nombre;     // nombre del empleado
@@ -25,11 +25,19 @@ public class Empleado {
     }
 
     /**
+     * Implementacion de metodo invitar
+     */
+    @Override
+    public void invitar(){
+        System.out.println("Invitacion enviada a empleado: " + nombre + " " + apellidos + ", Correo: " + correo);
+    }
+
+    /**
      * Metodo toString con la identificacion completa del empleado
      * @return String con nombre, apellidos, id y correo del empleado
      */
     @Override
     public String toString(){
-        return "Empleado{nombre = "+nombre + ", apellidos = " + apellidos + ", id = " + id + ", correo = " + correo + "}";
+        return "{ Nombre Completo: "+ nombre + " " + apellidos + ", id: " + id + ", correo: " + correo+ " }";
     }
 }

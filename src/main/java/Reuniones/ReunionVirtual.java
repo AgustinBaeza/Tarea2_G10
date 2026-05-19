@@ -1,24 +1,26 @@
 package Reuniones;
 
+import java.time.Duration;
 import java.time.Instant;
+import java.util.Date;
 
 /**
  * Clase que hereda de Reunion, corresponde a la sesion virtual en la que se realizara la reunion
  */
-public class ReunionVirtual extends Reunion{
+public class ReunionVirtual extends Reunion {
     private String enlace;
 
     /**
      * Constructor de la clase ReunionVirtual
      * @param fecha fecha de la reunion
-     * @param horaPrevista hora prevista de inicio
-     * @param duracionPrevista duracion prevista de la reunion
-     * @param horaInicio hora real de inicio
-     * @param horaFin hora real de finalizacion
-     * @param enlace link de la reunion
+     * @param horaPrevista hora que deberia iniciar la reunion
+     * @param duracionPrevista tiempo que deberia durar la reunion
+     * @param tipo tipo de reunion que se va a realizar
+     * @param organizador empleado que organiza la reunion
+     * @param enlace link de la reunion virtual
      */
-    public ReunionVirtual(Instant fecha, Instant horaPrevista, Instant duracionPrevista, Instant horaInicio, Instant horaFin, String enlace) {
-        super(fecha, horaPrevista, duracionPrevista, horaInicio, horaFin);
+    public ReunionVirtual(Date fecha, Instant horaPrevista, Duration duracionPrevista, tipoReunion tipo, Empleado organizador, String enlace) {
+        super(fecha, horaPrevista, duracionPrevista, tipo, organizador);
         this.enlace = enlace;
     }
 

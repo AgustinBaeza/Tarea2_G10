@@ -93,6 +93,14 @@ public class InvitadoExterno implements Invitable{
     }
 
     /**
+     * Getter del correo del invitado externo
+     * @return correo del invitado externo
+     */
+    public String getCorreo() {
+        return correo;
+    }
+
+    /**
      * Metodo que envia la invitacion al invitado externo, siendo la implementacion del metodo declarado en la interfaz Invitable
      * Muestra en consola la invitacion realizada, especificando nombre/apellidos junto al correo del invitado
      */

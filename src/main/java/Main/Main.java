@@ -1,71 +1,69 @@
 package Main;
 
-import Reuniones.Asistencia;
-import Reuniones.Empleado;
-import Reuniones.Nota;
-import Reuniones.Retraso;
+import Reuniones.*;
 
+import java.sql.Date;
+import java.time.Duration;
 import java.time.Instant;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-        // Crear empleados
-        Empleado empleado1 = new Empleado(
-                "1",
-                "Flores",
-                "Alan",
-                "alan@correo.com"
+        //empleados
+        Empleado ana    = new Empleado("1", "Diaz",    "Ana",    "ana@empresa.com");
+        Empleado juan   = new Empleado("2", "Garcia",  "Juan",   "juan@empresa.com");
+        Empleado maria  = new Empleado("3", "Lopez",   "Maria",  "maria@empresa.com");
+        Empleado carlos = new Empleado("4", "Perez",   "Carlos", "carlos@empresa.com");
+
+        //departamento
+        Departamento java = new Departamento("java");
+        java.addEmpleado(juan);
+        java.addEmpleado(maria);
+
+        //invitado externo
+        InvitadoExterno externo = new InvitadoExterno("Pedro", "Ramirez", "pedro@yopmail.com");
+
+        //crear reunion
+        Reunion r = new ReunionVirtual(
+                new Date(122,0,3),
+                Instant.now(),
+                Duration.ofMinutes(15),
+                tipoReunion.TECNICA,
+                ana,
+                "zoom.com/kajfljdalsda"
         );
 
-        Empleado empleado2 = new Empleado(
-                "2",
-                "Flores",
-                "Alex",
-                "Alex@correo.com"
-        );
+        //invitaciones
+        r.agregarInvitacion(java);
+        r.agregarInvitacion(carlos);
+        r.agregarInvitacion(externo);
 
-        // Crear asistencia
-        Asistencia asistencia = new Asistencia();
+        //iniciar reunion
+        r.iniciar();
 
-        // Agregar asistentes
-        asistencia.agregarAsistente(empleado1);
-        asistencia.agregarAsistente(empleado2);
+        //asistencia
+        r.agregarAsistente(maria);
+        r.agregarAsistente(externo);
+        r.agregarAusente(carlos);
 
-        // Registrar retraso
-        Retraso retraso = new Retraso(empleado2,Instant.now());
+        //retraso
+        Thread.sleep(100);
+        Retraso retrasoJuan = new Retraso(juan, Instant.now());
+        r.registrarRetraso(retrasoJuan);
 
-        asistencia.registrarRetraso(retraso);
+        //notas
+        Nota n1 = new Nota("Esta buenisima la reunion :)" , maria);
+        r.agregarNota(n1);
+        Nota n2 = new Nota("Ya me aburri :v" , carlos);
+        r.agregarNota(n2);
 
-        // Crear nota
-        Nota nota = new Nota(
-                "Se aprobó el presupuesto.",
-                empleado1
-        );
+        //fin reunion
+        Thread.sleep(1000);
+        r.finalizar();
 
-        // Mostrar información
-        System.out.println("** ASISTENCIA **");
-        System.out.println(asistencia);
-
-        System.out.println();
-
-        System.out.println("** NOTA **");
-        System.out.println(nota);
-
-        System.out.println();
-
-        System.out.println("** TOTAL ASISTENTES **");
-        System.out.println(
-                asistencia.totalAsistentes()
-        );
-
-        System.out.println();
-
-        System.out.println("** PORCENTAJE **");
-        System.out.println(
-                asistencia.calcularPorcentajeAsistencia(3)
-        );
-        System.out.println(":)");
+        TxtReunion txt = new TxtReunion(r);
+        txt.generarTxt();
+        System.out.println(txt.getNombreArchivo());
     }
 }

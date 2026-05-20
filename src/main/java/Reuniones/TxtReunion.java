@@ -33,8 +33,7 @@ public class TxtReunion {
     private String nombreReunion = "Reunion" + numReuniones +".txt";
 
     /**
-     * Genera un archivo txt y escribe en el
-     * la informacion de la reunion
+     * Genera un archivo txt y escribe en el la informacion de la reunion
      */
     public void generarTxt(){
         try{
@@ -48,7 +47,6 @@ public class TxtReunion {
 
     /**
      * Genera un String con toda la informacion de la reunion
-     *
      * @return informacion completa de la reunion
      */
     public String generarData(){
@@ -162,7 +160,6 @@ public class TxtReunion {
 
     /**
      * Getter del nombre del archivo generado
-     *
      * @return nombre del archivo txt
      */
     public String getNombreArchivo() {

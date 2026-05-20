@@ -275,15 +275,10 @@ public abstract class Reunion {
     /**
      * Representacion en String de la reunion
      *
-     * @return informacion de la reunion
+     * @return detalles de la reunion, incluyendo fecha, hora en que deberia empezar, hora real de inicio y de termino, tipo de reunion y el organizador de esta
      */
     @Override
     public String toString() {
-        return "fecha: "+ fecha.toString() +
-                ", horaPrevista, " + horaPrevista +
-                ", horaInicio: " + horaInicio +
-                ", horaFin: " + horaFin +
-                ", tipo: " + tipo +
-                ", organizador: "+ organizador;
+        return "{fecha: "+ fecha.toString() + ", horaPrevista, " + horaPrevista + ", horaInicio: " + horaInicio + ", horaFin: " + horaFin + ", tipo: " + tipo + ", organizador: "+ organizador + "}";
     }
 }

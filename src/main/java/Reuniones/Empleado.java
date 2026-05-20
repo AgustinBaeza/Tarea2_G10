@@ -25,6 +25,38 @@ public class Empleado implements Invitable {
     }
 
     /**
+     * Getter del ID
+     * @return ID del empleado como objeto String
+     */
+    public String getId(){
+        return id;
+    }
+
+    /**
+     * Getter del nombre del empleado
+     * @return nombre del empleado como objeto String
+     */
+    public String getNombre(){
+        return nombre;
+    }
+
+    /**
+     * Getter de los apellidos del empleado
+     * @return apellido del empleado como objeto String
+     */
+    public String getApellidos(){
+        return apellidos;
+    }
+
+    /**
+     * Getter del correo del empleado
+     * @return correo del empleado como objeto String
+     */
+    public String getCorreo(){
+        return correo;
+    }
+
+    /**
      * Implementacion de metodo invitar
      */
     @Override

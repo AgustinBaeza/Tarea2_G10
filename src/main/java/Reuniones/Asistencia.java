@@ -87,7 +87,7 @@ public class Asistencia {
             return 0;
         }
 
-        return ((double) asistentes.size() / totalInvitados) * 100;
+        return ((float) asistentes.size() / totalInvitados) * 100;
     }
 
     /**

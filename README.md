@@ -30,46 +30,6 @@ Para mantener la legibilidad del diagrama, las excepciones personalizadas no se 
 
 ---
 
-## Componentes Principales
-
-El proyecto se organiza principalmente en los siguientes paquetes y clases:
-
-```text
-src/main/java
-├── Main
-│   └── Main.java
-│
-└── Reuniones
-    ├── Reunion.java
-    ├── ReunionVirtual.java
-    ├── ReunionPresencial.java
-    ├── Empleado.java
-    ├── Departamento.java
-    ├── InvitadoExterno.java
-    ├── Invitable.java
-    ├── Invitacion.java
-    ├── Asistencia.java
-    ├── Retraso.java
-    ├── Nota.java
-    ├── TxtReunion.java
-    ├── tipoReunion.java
-    │
-    └── Excepciones
-        ├── AutorVacioException.java
-        ├── ContradiccionException.java
-        ├── DepartamentoInvalidoException.java
-        ├── DepartamentoVacioException.java
-        ├── EmpleadoInvalidoException.java
-        ├── EstadoReunionException.java
-        ├── InvitacionInvalidaException.java
-        ├── InvitadoInvalidoException.java
-        ├── NotaVaciaException.java
-        ├── RegistroDuplicadoException.java
-        └── RetrasoInvalidoException.java
-```
-
----
-
 ## Clase `Reunion`
 
 `Reunion` es una clase abstracta que representa una reunión general dentro del sistema.
@@ -303,6 +263,10 @@ La clase `Nota` representa un comentario o registro escrito durante una reunión
 
 Cada nota se asocia con un `Empleado`, quien cumple el rol de autor de la nota.
 
+### Justificación de diseño
+
+Se mantiene únicamente setter setContenido() pues se justifica que posterior a una reunión se necesite de corregir alguna nota hecha con algún tipo de error de tipografía, por otro lado, se descartan setters sobre autor y fechaHora pues generaría inconsistencias en los datos de quien realizó y en que momento se realizó una nota, ambos datos deben permanecer inmutables a la hora de crearse una para evitar asignaciones erróneas de estas.
+
 ---
 
 ## Clase `TxtReunion`
@@ -500,6 +464,12 @@ Ejemplos:
 - Agregar un empleado nulo.
 - Eliminar un empleado que no pertenece al departamento.
 - Acceder a un empleado mediante una posición fuera de rango.
+
+---
+
+### `ReunionInvalidaException`
+
+Se utiliza cuando se intenta ingresar fechas o tipo de reunion nulas al constructor de la clase Reunion
 
 ---
 

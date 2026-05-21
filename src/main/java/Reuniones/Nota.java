@@ -65,14 +65,6 @@ public class Nota {
     }
 
     /**
-     * Setter del autor de la nota
-     * @param autor objeto Empleado correspondiente a quien hizo la nota
-     */
-    public void setAutor(Empleado autor) {
-        this.autor = autor;
-    }
-
-    /**
      * toString que devuelve los detalles sobre la nota
      * @return contenido de la nota, hora en que se realizo y el autor de esta como objeto String
      */

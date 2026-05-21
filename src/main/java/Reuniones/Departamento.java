@@ -73,14 +73,6 @@ public class Departamento implements Invitable {
     }
 
     /**
-     * Getter del nombre del departamento
-     * @return nombre del departamento
-     */
-    public String getNombre(){
-        return nombre;
-    }
-
-    /**
      * Getter del departamento
      * @return ArrayList con la lista de empleados del departamento
      */

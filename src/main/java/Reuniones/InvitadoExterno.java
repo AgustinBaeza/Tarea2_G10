@@ -55,44 +55,6 @@ public class InvitadoExterno implements Invitable{
     }
 
     /**
-     * Setter del nombre del invitado externo
-     * @param nombre recibe nuevo nombre del invitado externo
-     * @throws InvitadoInvalidoException puede lanzar esta excepcion si el nombre es nulo o esta vacío
-     */
-    public void setNombre(String nombre){
-        if(nombre == null || nombre.isBlank()){
-            throw new InvitadoInvalidoException("El nombre del invitado externo debe ser valido.");
-        }
-
-        this.nombre = nombre;
-    }
-
-    /**
-     * Setter de los apellidos invitado externo
-     * @param apellidos recibe nuevos apellidos del invitado externo
-     * @throws InvitadoInvalidoException puede lanzar esta excepcion si los apellidos son nulos o estan vacios
-     */
-    public void setApellidos(String apellidos){
-        if(apellidos == null || apellidos.isBlank()){
-            throw new InvitadoInvalidoException("Los apellidos del invitado externo deben ser validos.");
-        }
-        this.apellidos = apellidos;
-    }
-
-    /**
-     * Setter del correo del invitado externo
-     * @param correo se recibe nuevo correo del invitado externo
-     * @throws InvitadoInvalidoException puede lanzar esta excepcion si el correo esta vacio o es nulo
-     */
-    public void setCorreo(String correo){
-        if(correo == null || correo.isBlank()){
-            throw new InvitadoInvalidoException("El correo del invitado externo debe ser valido.");
-        }
-
-        this.correo = correo;
-    }
-
-    /**
      * Getter del correo del invitado externo
      * @return correo del invitado externo
      */

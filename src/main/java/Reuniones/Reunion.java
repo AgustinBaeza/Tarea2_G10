@@ -36,7 +36,6 @@ public abstract class Reunion {
 
     /**
      * Constructor de la reunion
-     *
      * @param fecha fecha de la reunion
      * @param horaPrevista hora en que deberia empezar la reunion
      * @param duracionPrevista duracion que deberia tener la reunion
@@ -56,7 +55,6 @@ public abstract class Reunion {
 
     /**
      * Agrega una invitacion para un empleado
-     *
      * @param invitado empleado o departamento invitado
      */
     public void agregarInvitacion(Invitable invitado){
@@ -66,7 +64,6 @@ public abstract class Reunion {
     /**
      * Calcula el total de invitados a la reunion,
      * si el invitado corresponde a un departamento se cuentan todos los empleados
-     *
      * @return cantidad total de invitados
      */
     public int getTotalInvitados(){
@@ -85,7 +82,6 @@ public abstract class Reunion {
 
     /**
      * Registra un asistente a la reunion
-     *
      * @param invitado asistente registrado
      */
     public void agregarAsistente(Invitable invitado){
@@ -94,7 +90,6 @@ public abstract class Reunion {
 
     /**
      * Registra un invitado ausente
-     *
      * @param invitado invitado ausente
      */
     public void agregarAusente(Invitable invitado){
@@ -103,7 +98,6 @@ public abstract class Reunion {
 
     /**
      * Registra un retraso de asistencia
-     *
      * @param retraso retraso registrado
      */
     public void registrarRetraso(Retraso retraso){
@@ -112,7 +106,6 @@ public abstract class Reunion {
 
     /**
      * Obtiene la lista de asistentes
-     *
      * @return lista de asistentes
      */
     public List<Invitable> obtenerAsistencia(){
@@ -121,7 +114,6 @@ public abstract class Reunion {
 
     /**
      * Obtiene la lista de ausentes
-     *
      * @return lista de ausentes
      */
     public List<Invitable> obtenerAusencias(){
@@ -130,7 +122,6 @@ public abstract class Reunion {
 
     /**
      * Obtiene la lista de retrasos registrados
-     *
      * @return lista de retrasos
      */
     public List<Retraso> obtenerRetrasos(){
@@ -139,7 +130,6 @@ public abstract class Reunion {
 
     /**
      * Obtiene el total de asistentes
-     *
      * @return cantidad total de asistentes
      */
     public int obtenerTotalAsistencia() {
@@ -148,7 +138,6 @@ public abstract class Reunion {
 
     /**
      * Calcula el porcentaje de asistencia de la reunion
-     *
      * @return porcentaje de asistencia
      */
     public double obtenerPorcentajeAsistencia(){
@@ -157,7 +146,6 @@ public abstract class Reunion {
 
     /**
      * Calcula la duracion real de la reunion en minutos
-     *
      * @return duracion real de la reunion
      */
     public float calcularTiempoReal(){
@@ -183,7 +171,6 @@ public abstract class Reunion {
 
     /**
      * Agrega una nota a la reunion
-     *
      * @param nota nota registrada
      */
     public void agregarNota(Nota nota){
@@ -192,7 +179,6 @@ public abstract class Reunion {
 
     /**
      * Getter de la fecha de la reunion
-     *
      * @return fecha de la reunion
      */
     public Date getFecha() {
@@ -201,7 +187,6 @@ public abstract class Reunion {
 
     /**
      * Getter de la hora prevista de inicio
-     *
      * @return hora prevista
      */
     public Instant getHoraPrevista() {
@@ -210,7 +195,6 @@ public abstract class Reunion {
 
     /**
      * Getter de la duracion prevista
-     *
      * @return duracion prevista
      */
     public Duration getDuracionPrevista() {
@@ -219,7 +203,6 @@ public abstract class Reunion {
 
     /**
      * Getter de la hora real de inicio
-     *
      * @return hora de inicio
      */
     public Instant getHoraInicio() {
@@ -228,7 +211,6 @@ public abstract class Reunion {
 
     /**
      * Getter de la hora real del final
-     *
      * @return hora de finalizacion
      */
     public Instant getHoraFin() {
@@ -237,7 +219,6 @@ public abstract class Reunion {
 
     /**
      * Getter del el tipo de reunion
-     *
      * @return tipo de reunion
      */
 
@@ -247,7 +228,6 @@ public abstract class Reunion {
 
     /**
      * Getter de el organizador de la reunion
-     *
      * @return organizador
      */
     public Empleado getOrganizador() {
@@ -256,7 +236,6 @@ public abstract class Reunion {
 
     /**
      * Getter de las invitaciones registradas
-     *
      * @return lista de invitaciones
      */
     public ArrayList<Invitacion> getInvitaciones() {
@@ -265,7 +244,6 @@ public abstract class Reunion {
 
     /**
      * Getter de las notas registradas
-     *
      * @return lista de notas
      */
     public ArrayList<Nota> getNotas() {
@@ -274,7 +252,6 @@ public abstract class Reunion {
 
     /**
      * Representacion en String de la reunion
-     *
      * @return detalles de la reunion, incluyendo fecha, hora en que deberia empezar, hora real de inicio y de termino, tipo de reunion y el organizador de esta
      */
     @Override

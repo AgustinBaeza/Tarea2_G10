@@ -64,7 +64,7 @@ public class TxtReunion {
 
         //Datos Previstos
         sb.append("Hora prevista: \n-").append( HoraPrevista ).append("\n");
-        sb.append("Duracion prevista: \n-").append(reunion.getDuracionPrevista().toMinutes()).append("minutos\n\n");
+        sb.append("Duracion prevista: \n-").append(reunion.getDuracionPrevista().toMinutes()).append(" minutos\n\n");
 
         //Tipo reunion
         sb.append("Tipo de reunion: \n-").append(reunion.getTipo()).append("\n");

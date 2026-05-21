@@ -22,31 +22,31 @@ public class Asistencia {
     }
     /**
     * Agrega un asistente.
-    * @param empleado empleado asistente
+    * @param invitado invitado asistente
      * @throws RegistroDuplicadoException
-     * si el empleado ya fue registrado como asistente
+     * si el invitado ya fue registrado como asistente
      */
-    public void agregarAsistente(Invitable empleado) {
+    public void agregarAsistente(Invitable invitado) {
 
-        if (asistentes.contains(empleado)) {
-            throw new RegistroDuplicadoException("El empleado ya fue registrado como asistente.");
+        if (asistentes.contains(invitado)) {
+            throw new RegistroDuplicadoException("El invitado ya fue registrado como asistente.");
         }
 
-        asistentes.add(empleado);
+        asistentes.add(invitado);
     }
     /**
      * Agrega un empleado ausente.
-     * @param empleado empleado ausente
+     * @param invitado empleado ausente
      * @throws RegistroDuplicadoException
      * si el empleado ya fue registrado como ausente
      */
-    public void agregarAusente(Invitable empleado) {
+    public void agregarAusente(Invitable invitado) {
 
-        if (ausentes.contains(empleado)) {
+        if (ausentes.contains(invitado)) {
             throw new RegistroDuplicadoException("El empleado ya fue registrado como ausente.");
         }
 
-        ausentes.add(empleado);
+        ausentes.add(invitado);
     }
     /**
      * Registra un retraso.

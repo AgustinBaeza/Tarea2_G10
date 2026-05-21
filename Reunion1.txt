@@ -1,0 +1,39 @@
+Informe Reunion: 
+
+Fecha: 
+-2022-01-03
+Hora prevista: 
+-2026-05-21T02:52:56.539224800Z
+Duracion prevista: 
+-15minutos
+
+Tipo de reunion: 
+-TECNICA
+Organizador: 
+-{ Nombre Completo: Ana Diaz, id: 1, correo: ana@empresa.com }
+
+Hora Inicio: 2026-05-21T02:52:56.567351800Z
+Hora Fin: 2026-05-21T02:52:57.706345500Z
+Duracion real: 0.0 minutos
+
+Modalidad: Virtual
+Enlace: zoom.com/kajfljdalsda
+
+Asistentes: 
+ -{ Nombre Completo: Maria Lopez, id: 3, correo: maria@empresa.com }
+ -InvitadoExterno{nombre = Pedro, apellidos = Ramirez, correo = pedro@yopmail.com}
+ -{ Nombre Completo: Carlos Perez, id: 4, correo: carlos@empresa.com }
+
+Ausentes: 
+-{ Nombre Completo: Carlos Perez, id: 4, correo: carlos@empresa.com }
+-{ Nombre Completo: Maria Lopez, id: 3, correo: maria@empresa.com }
+
+Retrasos: 
+-Retraso{empleado = { Nombre Completo: Juan Garcia, id: 2, correo: juan@empresa.com }, horaLlegada = 2026-05-21T02:52:56.682107800Z}
+
+Total asistentes: 3
+Porcentaje de asistencia: 75.0
+
+Notas: 
+{ Nombre Completo: Maria Lopez, id: 3, correo: maria@empresa.com }: Esta buenisima la reunion :)
+{ Nombre Completo: Carlos Perez, id: 4, correo: carlos@empresa.com }: Ya me aburri :v

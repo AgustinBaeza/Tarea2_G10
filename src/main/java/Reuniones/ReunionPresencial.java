@@ -31,4 +31,13 @@ public class ReunionPresencial  extends Reunion {
     public String getSala() {
         return sala;
     }
+
+    @Override
+
+    @Override
+    public String toString() {
+        return "ReunionPresencial{" +
+                "sala='" + sala + '\'' +
+                '}';
+    }
 }

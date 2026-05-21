@@ -89,6 +89,6 @@ public class Empleado implements Invitable {
      */
     @Override
     public String toString(){
-        return "{ Nombre Completo: "+ nombre + " " + apellidos + ", id: " + id + ", correo: " + correo+ " }";
+        return "{Nombre Completo: "+ nombre + " " + apellidos + ", id: " + id + ", correo: " + correo+ "}";
     }
 }

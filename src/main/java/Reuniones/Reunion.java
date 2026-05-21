@@ -1,6 +1,8 @@
 package Reuniones;
 
 import Reuniones.Excepciones.EstadoReunionException;
+import Reuniones.Excepciones.ReunionInvalidaException;
+
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -44,6 +46,16 @@ public abstract class Reunion {
      * @param organizador empleado que organiza la reunion
      */
     public Reunion(Date fecha, Instant horaPrevista, Duration duracionPrevista, tipoReunion tipo, Empleado organizador){
+        if (fecha == null) {
+            throw new ReunionInvalidaException("La fecha de la reunion no puede ser nula.");
+        }
+        if (duracionPrevista == null) {
+            throw new ReunionInvalidaException("La duracion prevista no puede ser nula.");
+        }
+        if (tipo == null) {
+            throw new ReunionInvalidaException("El tipo de reunion no puede ser nulo.");
+        }
+
         this.fecha = fecha;
         this.horaPrevista = horaPrevista;
         this.duracionPrevista = duracionPrevista;
@@ -287,6 +299,6 @@ public abstract class Reunion {
      */
     @Override
     public String toString() {
-        return "{fecha: "+ fecha.toString() + ", horaPrevista, " + horaPrevista + ", horaInicio: " + horaInicio + ", horaFin: " + horaFin + ", tipo: " + tipo + ", organizador: "+ organizador + "}";
+        return "Reunion{fecha: "+ fecha.toString() + ", horaPrevista, " + horaPrevista + ", horaInicio: " + horaInicio + ", horaFin: " + horaFin + ", tipo: " + tipo + ", organizador: "+ organizador + "}";
     }
 }

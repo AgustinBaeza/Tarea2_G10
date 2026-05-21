@@ -45,6 +45,9 @@ public class Nota {
      * @param contenido String que detalla lo que se busca escribir en la nota
      */
     public void setContenido(String contenido) {
+        if (contenido == null || contenido.isBlank()) {
+            throw new NotaVaciaException("La nota no puede estar vacía.");
+        }
         this.contenido = contenido;
     }
 

@@ -73,23 +73,19 @@ public class Departamento implements Invitable {
     }
 
     /**
+     * Getter del nombre del departamento
+     * @return nombre del departamento
+     */
+    public String getNombre(){
+        return nombre;
+    }
+
+    /**
      * Getter del departamento
      * @return ArrayList con la lista de empleados del departamento
      */
     public ArrayList<Empleado> getDepartamento(){
         return departamento;
-    }
-
-    /**
-     * Setter del nombre del departamento
-     * @param nombre nombre nuevo a asignar al departamento
-     * @throws DepartamentoVacioException puede lanzar esta excepcion si se intenta ingresar un nombre nulo o vacio al departamento
-     */
-    public void setNombre(String nombre){
-        if(nombre == null || nombre.isBlank()){
-            throw new DepartamentoInvalidoException("El nombre del departamento no puede ser vacio");
-        }
-        this.nombre = nombre;
     }
 
     /**

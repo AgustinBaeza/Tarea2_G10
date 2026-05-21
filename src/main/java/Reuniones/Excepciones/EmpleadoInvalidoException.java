@@ -1,7 +1,7 @@
 package Reuniones.Excepciones;
 
 /**
- * Excepcion lanzada cuando se intenta ingresar un empleado nulo a un departamento, cuando se intenta eliminar un empleado que no pertenece al departamento
+ * Excepcion lanzada cuando se intenta eliminar un empleado que no pertenece al departamento
  * o cuando se intenta acceder a un empleado mediante una posicion fuera de rango
  */
 public class EmpleadoInvalidoException extends RuntimeException{

@@ -32,9 +32,6 @@ public class Departamento implements Invitable {
      * @throws EmpleadoInvalidoException puede lanzar esta excepcion si el empleado es nulo
      */
     public void addEmpleado(Empleado empleado){
-        if (empleado == null){
-            throw new EmpleadoInvalidoException("El empleado no puede ser nulo");
-        }
 
         departamento.add(empleado);
     }

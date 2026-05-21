@@ -1,5 +1,6 @@
 package Reuniones;
 
+import Reuniones.Excepciones.ContradiccionException;
 import Reuniones.Excepciones.RegistroDuplicadoException;
 import java.util.ArrayList;
 
@@ -20,18 +21,22 @@ public class Asistencia {
         ausentes = new ArrayList<>();
         retrasos = new ArrayList<>();
     }
-    /**
-    * Agrega un asistente.
-    * @param empleado empleado asistente
+     /**
+     * Agrega un asistente.
+     * @param empleado empleado asistente
      * @throws RegistroDuplicadoException
      * si el empleado ya fue registrado como asistente
+     * @throws ContradiccionException
+     * si el empleado ya fue registrado como ausente
      */
     public void agregarAsistente(Invitable empleado) {
 
         if (asistentes.contains(empleado)) {
             throw new RegistroDuplicadoException("El empleado ya fue registrado como asistente.");
         }
-
+        if (ausentes.contains(empleado)) {
+            throw new ContradiccionException("El empleado ya fue registrado como ausente, no puede registrarse como asistente.");
+        }
         asistentes.add(empleado);
     }
     /**
@@ -39,11 +44,16 @@ public class Asistencia {
      * @param empleado empleado ausente
      * @throws RegistroDuplicadoException
      * si el empleado ya fue registrado como ausente
+     * @throws ContradiccionException
+     * si el empleado ya fue registrado como asistente
      */
     public void agregarAusente(Invitable empleado) {
 
         if (ausentes.contains(empleado)) {
             throw new RegistroDuplicadoException("El empleado ya fue registrado como ausente.");
+        }
+        if (asistentes.contains(empleado)) {
+            throw new ContradiccionException("El empleado ya fue registrado como asistente, no puede registrarse como ausente.");
         }
 
         ausentes.add(empleado);

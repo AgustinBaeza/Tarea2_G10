@@ -1,5 +1,7 @@
 package Reuniones;
 
+import Reuniones.Excepciones.InvitadoInvalidoException;
+
 /**
  * Clase que representa a un empleado
  * Almacena la informacion de identificacion y correo de un empleado
@@ -18,6 +20,23 @@ public class Empleado implements Invitable {
      * @param correo      correo del empleado
      */
     public Empleado(String id, String apellidos, String nombre, String correo) {
+
+        if(id == null || id.isBlank()){
+            throw new InvitadoInvalidoException("El nombre del invitado debe ser valido.");
+        }
+
+        if(nombre == null || nombre.isBlank()){
+            throw new InvitadoInvalidoException("El nombre del invitado debe ser valido.");
+        }
+
+        if(apellidos == null || apellidos.isBlank()){
+            throw new InvitadoInvalidoException("Los apellidos del invitado deben ser validos.");
+        }
+
+        if(correo == null || correo.isBlank()){
+            throw new InvitadoInvalidoException("El correo del invitado debe ser valido.");
+        }
+
         this.id = id;
         this.apellidos = apellidos;
         this.nombre = nombre;

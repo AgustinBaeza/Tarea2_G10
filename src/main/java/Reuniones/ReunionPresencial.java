@@ -33,8 +33,6 @@ public class ReunionPresencial  extends Reunion {
     }
 
     @Override
-
-    @Override
     public String toString() {
         return "ReunionPresencial{" +
                 "sala='" + sala + '\'' +

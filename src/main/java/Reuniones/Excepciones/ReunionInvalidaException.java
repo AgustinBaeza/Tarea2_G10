@@ -1,7 +1,7 @@
 package Reuniones.Excepciones;
 
 /**
- * Excepcion lanzada cuando se intentan ingresar fechas o tipo de reuniones nulas al constructor de la clase Reunion
+ * Excepcion lanzada cuando se intenta ingresar fechas o tipo de reuniones nulas al constructor de la clase Reunion
  */
 public class ReunionInvalidaException extends RuntimeException{
 

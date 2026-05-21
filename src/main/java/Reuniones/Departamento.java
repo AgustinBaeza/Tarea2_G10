@@ -29,7 +29,6 @@ public class Departamento implements Invitable {
     /**
      * Metodo para agregar empleados al departamento
      * @param empleado empleado a agregar
-     * @throws EmpleadoInvalidoException puede lanzar esta excepcion si el empleado es nulo
      */
     public void addEmpleado(Empleado empleado){
 

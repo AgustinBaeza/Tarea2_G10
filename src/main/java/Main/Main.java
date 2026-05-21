@@ -1,7 +1,7 @@
 package Main;
 
 import Reuniones.*;
-
+import Reuniones.Excepciones.*;
 import java.sql.Date;
 import java.time.Duration;
 import java.time.Instant;
@@ -42,10 +42,47 @@ public class Main {
         //iniciar reunion
         r.iniciar();
 
+        //prueba EstadoReunionException: no permite iniciar dos veces la misma reunion
+        try {
+            r.iniciar();
+        } catch (EstadoReunionException e) {
+            System.out.println("Prueba EstadoReunionException OK: " + e.getMessage());
+        }
+
         //asistencia
         r.agregarAsistente(maria);
         r.agregarAsistente(externo);
         r.agregarAusente(carlos);
+
+        //prueba ContradiccionException: Maria ya esta como asistente, no puede registrarse como ausente
+        try {
+            r.agregarAusente(maria);
+        } catch (ContradiccionException e) {
+            System.out.println("Prueba ContradiccionException OK: " + e.getMessage());
+        }
+
+        //prueba ContradiccionException: Carlos ya esta como ausente, no puede registrarse como asistente
+        try {
+            r.agregarAsistente(carlos);
+        } catch (ContradiccionException e) {
+            System.out.println("Prueba ContradiccionException OK: " + e.getMessage());
+        }
+
+        //prueba EstadoReunionException: no permite finalizar una reunion que no ha iniciado
+        Reunion reunionSinIniciar = new ReunionVirtual(
+                new Date(122,0,3),
+                Instant.now(),
+                Duration.ofMinutes(15),
+                tipoReunion.TECNICA,
+                ana,
+                "zoom.com/prueba"
+        );
+
+        try {
+            reunionSinIniciar.finalizar();
+        } catch (EstadoReunionException e) {
+            System.out.println("Prueba EstadoReunionException OK: " + e.getMessage());
+        }
 
         //retraso
         Thread.sleep(100);
@@ -61,6 +98,13 @@ public class Main {
         //fin reunion
         Thread.sleep(1000);
         r.finalizar();
+
+        //prueba EstadoReunionException: no permite finalizar dos veces la misma reunion
+        try {
+            r.finalizar();
+        } catch (EstadoReunionException e) {
+            System.out.println("Prueba EstadoReunionException OK: " + e.getMessage());
+        }
 
         TxtReunion txt = new TxtReunion(r);
         txt.generarTxt();

@@ -1,7 +1,6 @@
 package Reuniones;
 
 import Reuniones.Excepciones.RegistroDuplicadoException;
-
 import java.util.ArrayList;
 
 /**
@@ -23,29 +22,31 @@ public class Asistencia {
     }
     /**
     * Agrega un asistente.
-    * @param invitado invitado asistente
+    * @param empleado empleado asistente
      * @throws RegistroDuplicadoException
-     * si el invitado ya fue registrado como asistente
+     * si el empleado ya fue registrado como asistente
      */
-    public void agregarAsistente(Invitable invitado) {
-        if (asistentes.contains(invitado)) {
-            throw new RegistroDuplicadoException("El invitado ya fue registrado como asistente.");
+    public void agregarAsistente(Invitable empleado) {
+
+        if (asistentes.contains(empleado)) {
+            throw new RegistroDuplicadoException("El empleado ya fue registrado como asistente.");
         }
 
-        asistentes.add(invitado);
+        asistentes.add(empleado);
     }
     /**
-     * Agrega un invitado ausente.
-     * @param invitado invitado ausente
+     * Agrega un empleado ausente.
+     * @param empleado empleado ausente
      * @throws RegistroDuplicadoException
-     * si el invitado ya fue registrado como ausente
+     * si el empleado ya fue registrado como ausente
      */
-    public void agregarAusente(Invitable invitado) {
-        if (ausentes.contains(invitado)) {
-            throw new RegistroDuplicadoException("El invitado ya fue registrado como ausente.");
+    public void agregarAusente(Invitable empleado) {
+
+        if (ausentes.contains(empleado)) {
+            throw new RegistroDuplicadoException("El empleado ya fue registrado como ausente.");
         }
 
-        ausentes.add(invitado);
+        ausentes.add(empleado);
     }
     /**
      * Registra un retraso.

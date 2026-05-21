@@ -1,5 +1,6 @@
 package Reuniones;
 
+import Reuniones.Excepciones.EstadoReunionException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -157,15 +158,45 @@ public abstract class Reunion {
 
     /**
      * Registra la hora actual como inicio de la reunion
+     *
+     * Valida que la reunion no haya sido iniciada anteriormente
+     * y que no se encuentre finalizada.
+     *
+     * @throws EstadoReunionException
+     * si la reunion ya fue iniciada o si ya fue finalizada
      */
     public void iniciar(){
+
+        if (horaInicio != null) {
+            throw new EstadoReunionException("La reunion ya fue iniciada.");
+        }
+
+        if (horaFin != null) {
+            throw new EstadoReunionException("No se puede iniciar una reunion que ya fue finalizada.");
+        }
+
         horaInicio = Instant.now();
     }
 
     /**
      * Registra la hora actual como final de la reunion
+     *
+     * Valida que la reunion haya sido iniciada previamente
+     * y que no haya sido finalizada anteriormente.
+     *
+     * @throws EstadoReunionException
+     * si la reunion aun no ha iniciado o si ya fue finalizada
      */
     public void finalizar(){
+
+        if (horaInicio == null) {
+            throw new EstadoReunionException("No se puede finalizar una reunion que aun no ha iniciado.");
+        }
+
+        if (horaFin != null) {
+            throw new EstadoReunionException("La reunion ya fue finalizada.");
+        }
+
         horaFin = Instant.now();
     }
 

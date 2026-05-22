@@ -67,6 +67,39 @@ También se incorporaron métodos `toString()` en las clases principales, con el
 Estas modificaciones permiten que el modelo actualizado sea coherente con las nuevas funcionalidades solicitadas, manteniendo una estructura orientada a objetos clara, extensible y alineada con el código implementado.
 
 ---
+## Decisiones de Diseño Adicionales
+
+Respecto al requisito del enunciado de Getters y Setters, particularmente sobre los Setters de algunas clases, se tomo la decision de hacer descarte de estos mismos, por las malas prácticas que se pueden llegar a ejecutar con estos mismos, en particular, las clases sobre las que se considera esto son:
+
+- Invitacion.java
+  
+Se descarta la idea de implementar setters a Invitación tales como setInvitado() o setHora() porque modificarlos posterior a su construcción generaría datos inconsistentes a la hora de registrar los datos de la invitación a la entidad, la hora registrada no correspondería al momento real de invitación y si se quiere hacer una invitación a otra entidad dentro de las disponibles, simplemente se crea una nueva Invitación, por lo que no es necesario setInvitado().
+
+- Retraso.java
+  
+Se descartan los setters para Retraso.java, pues representa un hecho que ocurrió en específico en cierto momento a cierta hora, la modificación de estas no sería mas que para un mal uso de este recurso, pues si bien un empleado en la práctica podría justificar su retraso, debe quedar registro de este de igual forma.
+
+- Asistencia.java
+  
+Se descarta la implementación de setters para las listas de asistentes, ausentes y retrasos, ya que esta clase funciona como el registro oficial y la bitácora de lo que ocurre en una reunión. Permitir un setter que reemplace una colección completa da lugar a la alteración del historial de asistencia de un momento a otro. Además, al sobreescribir las listas de golpe se evadirían por completo las validaciones esenciales del sistema, como el control que evita registrar a alguien dos veces mediante RegistroDuplicadoException. En la práctica, la asistencia se construye de manera incremental a medida que transcurre el evento, por lo que cualquier cambio debe pasar obligatoriamente por los métodos dedicados a ello, tal es el caso de agregarAsistente(), agregarAusente() y registrarRetraso().
+
+- Empleado.java
+
+Se descarta la implementación de setters a Empleado pues al representar a entidades reales cuyos datos no deberían poder modificarse una vez registrados en el historial del sistema, si bien atributos como el ID, Nombre y Apellidos son permanentes, está la posibilidad de cambiar el correo de un empleado, pero esto de igual forma se descarta pues es inconsistente que un empleado cambie su correo a media reunión y el sistema registre este cambio (en la práctica no sucede de esa forma si es que ocurre un cambio de correo dentro de una empresa), esto puede generar inconsistencias a la hora de registrar invitaciones/asistencia/atrasos que ya hacen referencia al objeto original, por lo cual únicamente se mantienen los getters.
+
+- InvitadoExterno.java
+
+Bajo el mismo argumento que Empleado.java, se descarta la posibilidad de modificar nombre, apellidos y correo mediante setters en el código, pues en una reunión esto se registra una única vez al momento de ingresar y cambios posteriores generarían inconsistencias en los registros.
+
+- Nota.java
+
+Si bien se descarta la implementacion setAutor() por las incoherencias similares a clases anteriores que puede dar lugar, se mantiene setContenido() pues es una correccion sobre notas que en la práctica si puede llegar a necesitarse, ya sea para corregir un error tipográfico o añadir detalles a lo anotado.
+
+- Departamento.java
+
+Se descarta la implementacion de setters a Departamento tales como setNombre() o setDepartamento() pues esto daria la posibilidad de que cualquier componente externo reemplace a todos los empleados de golpe saltándose el control de los métodos específicos (addEmpleado() y removeEmpleado()) y arriesgando la filtracion de datos nulos o inconsistentes, además que el cambio de nombre de un departamento (que en sí, corresponde a la identidad entera de este mismo) puede alterar la consistencia de informes impresos posteriores y a los datos registrados a mitad de la reunión realizada, lo que daría lugar a malas prácticas con su implementación.
+
+---
 
 ## Excepciones Personalizadas
 
@@ -94,96 +127,6 @@ Las principales excepciones implementadas son:
 - `ReunionInvalidaException`: valida datos incorrectos al crear una reunión, como fecha, duración, hora prevista o tipo de reunión nulos.
 
 Estas excepciones permiten manejar casos normales y extremos de forma más clara, evitando que el sistema acepte datos inconsistentes.
-
----
-
-## Funcionalidades Implementadas
-
-El sistema permite:
-
-- Crear reuniones virtuales y presenciales.
-- Registrar un organizador.
-- Invitar empleados.
-- Invitar departamentos completos.
-- Invitar personas externas.
-- Registrar asistentes.
-- Registrar ausentes.
-- Registrar retrasos.
-- Registrar notas.
-- Iniciar una reunión.
-- Finalizar una reunión.
-- Calcular la duración real.
-- Calcular el total de asistentes.
-- Calcular el porcentaje de asistencia.
-- Generar un informe en archivo `.txt`.
-- Validar errores mediante excepciones personalizadas.
-
----
-
-## Informe de Reunión
-
-La generación del informe se realiza mediante la clase `TxtReunion`.
-
-El informe generado resume la información principal de la reunión y la almacena en un archivo de texto. Este archivo incluye datos generales de la reunión, información de asistencia, retrasos, estadísticas y notas registradas.
-
-Esta funcionalidad permite dejar un registro persistente de la reunión fuera de la ejecución del programa, cumpliendo con el requerimiento de generar un informe en formato `.txt`.
-
----
-
-## Validación y Pruebas
-
-El proyecto se encuentra configurado como proyecto Maven e incluye dependencia de JUnit Jupiter.
-
-Además, se utilizó `Main.java` como apoyo para realizar una prueba manual de integración del sistema. En esta prueba se valida un flujo general que incluye creación de empleados, creación de un departamento, creación de un invitado externo, creación de una reunión, registro de invitaciones, asistencia, ausencias, retrasos, notas, inicio y finalización de reunión, generación de informe `.txt` y ejecución de excepciones personalizadas.
-
-El `Main` no reemplaza las pruebas unitarias, pero permite observar rápidamente el comportamiento general del sistema durante la ejecución.
-
----
-
-## Documentación
-
-El código fue documentado utilizando comentarios en formato JavaDoc en las clases y métodos principales.
-
-La documentación del código incluye el propósito de las clases, parámetros, retornos y excepciones relevantes. Por esta razón, el README no documenta en detalle cada clase y método, sino que se enfoca en describir el funcionamiento general del sistema, las decisiones de diseño y las diferencias respecto al modelo UML original.
-
----
-
-## Tecnologías Utilizadas
-
-- Java
-- Maven
-- JUnit Jupiter
-- IntelliJ IDEA
-- Git
-- GitHub
-
----
-
-## Conceptos de Programación Orientada a Objetos Aplicados
-
-En el proyecto se aplican los siguientes conceptos:
-
-- Clases y objetos.
-- Encapsulamiento.
-- Herencia.
-- Polimorfismo.
-- Interfaces.
-- Clases abstractas.
-- Composición.
-- Asociación.
-- Enumeraciones.
-- Excepciones personalizadas.
-- Colecciones dinámicas.
-- Separación de responsabilidades.
-- Reutilización de código.
-
----
-
-El proyecto implementa un sistema funcional de gestión de reuniones, incorporando los elementos principales solicitados en el enunciado de la tarea.
-
-El sistema permite administrar reuniones virtuales y presenciales, registrar participantes internos y externos, controlar asistencia, registrar retrasos, agregar notas, iniciar y finalizar reuniones, calcular estadísticas de asistencia y generar informes en archivo `.txt`.
-
-Las modificaciones realizadas al modelo original fueron incorporadas al UML actualizado y justificadas en este README.
 
 ---
 

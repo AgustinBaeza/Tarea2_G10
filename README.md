@@ -123,6 +123,7 @@ Las principales excepciones implementadas son:
 - `InvitacionInvalidaException`: evita crear invitaciones con un invitado nulo.
 - `DepartamentoInvalidoException`: valida nombres incorrectos de departamentos.
 - `DepartamentoVacioException`: evita invitar departamentos sin empleados.
+- `EscrituraArchivoException`: notifica error al escribir o generar un archivo de texto .txt
 - `EmpleadoInvalidoException`: controla operaciones inválidas con empleados dentro de un departamento.
 - `ReunionInvalidaException`: valida datos incorrectos al crear una reunión, como fecha, duración, hora prevista o tipo de reunión nulos.
 

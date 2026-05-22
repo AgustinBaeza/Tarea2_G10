@@ -1,5 +1,7 @@
 package Reuniones;
 
+import Reuniones.Excepciones.EscrituraArchivoException;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -41,7 +43,7 @@ public class TxtReunion {
             writer.write(generarData());
             writer.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new EscrituraArchivoException("Error al intentar escribir o guardar el archivo de texto: " + e.getMessage());
         }
     }
 

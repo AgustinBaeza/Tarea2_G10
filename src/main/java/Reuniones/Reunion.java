@@ -170,10 +170,8 @@ public abstract class Reunion {
 
     /**
      * Registra la hora actual como inicio de la reunion
-     *
      * Valida que la reunion no haya sido iniciada anteriormente
      * y que no se encuentre finalizada.
-     *
      * @throws EstadoReunionException
      * si la reunion ya fue iniciada o si ya fue finalizada
      */
@@ -192,10 +190,8 @@ public abstract class Reunion {
 
     /**
      * Registra la hora actual como final de la reunion
-     *
      * Valida que la reunion haya sido iniciada previamente
      * y que no haya sido finalizada anteriormente.
-     *
      * @throws EstadoReunionException
      * si la reunion aun no ha iniciado o si ya fue finalizada
      */

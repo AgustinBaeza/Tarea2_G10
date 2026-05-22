@@ -108,7 +108,7 @@ public class TestAsistencia {
     void porcentajeValoresValidos() {
 
         asistencia.agregarAsistente(empleado);
-        double porcentaje = asistencia.calcularPorcentajeAsistencia(4); // 1 de 4 representa el 25.0%
+        double porcentaje = asistencia.calcularPorcentajeAsistencia(4);
         assertEquals(25.0, porcentaje);
     }
 }
